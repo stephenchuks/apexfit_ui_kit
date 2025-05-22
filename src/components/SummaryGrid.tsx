@@ -1,6 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar, BarChart, LineChart, ArrowRight } from 'lucide-react';
+import { useBranch } from '@/contexts/BranchContext';
 
 const SummaryGrid = () => {
   // Static placeholder data 
@@ -9,6 +10,8 @@ const SummaryGrid = () => {
   const currentWeight = "180 lb";
   const weightDate = "May 20";
   const progress = "+5 lb";
+  
+  const { selectedBranch } = useBranch();
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -21,7 +24,7 @@ const SummaryGrid = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-xl font-bold">{nextWorkout}</p>
+          <p className="text-xl font-bold">{selectedBranch.name} – {nextWorkout}</p>
           <div className="mt-2">
             <a href="#" className="text-apexfit-600 text-sm flex items-center hover:underline">
               View details <ArrowRight className="ml-1 h-3 w-3" />

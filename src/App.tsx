@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { BranchProvider } from "./contexts/BranchContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import WorkoutsPage from "./pages/WorkoutsPage";
@@ -14,30 +15,42 @@ import ProfilePage from "./pages/ProfilePage";
 import NutritionPage from "./pages/NutritionPage";
 import CommunityPage from "./pages/CommunityPage";
 import AchievementsPage from "./pages/AchievementsPage";
+import SubscriptionPage from "./pages/SubscriptionPage";
+import BillingPage from "./pages/BillingPage";
+import TrainingPage from "./pages/TrainingPage";
+import BookingPage from "./pages/BookingPage";
+import TrainerProfilePage from "./pages/TrainerProfilePage";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/workouts" element={<WorkoutsPage />} />
-            <Route path="/workouts/:id" element={<WorkoutDetailPage />} />
-            <Route path="/progress" element={<ProgressPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/nutrition" element={<NutritionPage />} />
-            <Route path="/community" element={<CommunityPage />} />
-            <Route path="/achievements" element={<AchievementsPage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <BranchProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/workouts" element={<WorkoutsPage />} />
+              <Route path="/workouts/:id" element={<WorkoutDetailPage />} />
+              <Route path="/progress" element={<ProgressPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/nutrition" element={<NutritionPage />} />
+              <Route path="/community" element={<CommunityPage />} />
+              <Route path="/achievements" element={<AchievementsPage />} />
+              <Route path="/subscription" element={<SubscriptionPage />} />
+              <Route path="/billing" element={<BillingPage />} />
+              <Route path="/training" element={<TrainingPage />} />
+              <Route path="/training/book" element={<BookingPage />} />
+              <Route path="/trainer/:id" element={<TrainerProfilePage />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </BranchProvider>
     </ThemeProvider>
   </QueryClientProvider>
 );

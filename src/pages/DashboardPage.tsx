@@ -1,6 +1,7 @@
 
 import Header from '@/components/Header';
 import WelcomeBanner from '@/components/WelcomeBanner';
+import UpsellBanner from '@/components/UpsellBanner';
 import SummaryGrid from '@/components/SummaryGrid';
 import AnalyticsSection from '@/components/AnalyticsSection';
 import RecentWorkouts from '@/components/RecentWorkouts';
@@ -15,6 +16,9 @@ const DashboardPage = () => {
       <main className="flex-grow">
         <div className="container mx-auto px-4 py-6">
           <div className="space-y-8">
+            {/* Upsell Banner */}
+            <UpsellBanner />
+            
             <WelcomeBanner />
             
             {/* Streak Tracker */}
